@@ -92,10 +92,13 @@ class Run:
 class AutoRun:
     @staticmethod
     def enter(boy, e):
-        boy.start_time = get_time() # 현재 시각 저장
-        boy.speed = 1.0
-        boy.scale = 1.0
-        boy.dir = 1         # 초기 값 : 오른쪽 방향
+        if a_down(e):
+            boy.start_time = get_time() # 현재 시각 저장
+            boy.speed = 1.0
+            boy.scale = 1.0
+            boy.dir = 1         # 초기 값 : 오른쪽 방향
+
+        boy.frame = 0
 
     @staticmethod
     def exit(boy, e):
@@ -103,6 +106,7 @@ class AutoRun:
 
     @staticmethod
     def do(boy):
+        boy.frame = (boy.frame + 1) % 8
         if get_time() - boy.start_time < 5:
             boy.x += boy.speed * boy.dir
             boy.speed += 0.1
