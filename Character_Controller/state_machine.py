@@ -30,7 +30,7 @@ def a_down(e):
     return e[0] == 'INPUT' and e[1].type == SDL_KEYDOWN and e[1].key == SDLK_a
 
 def dir_key_down(e):
-    pass
+    return e[0] == 'INPUT' and e[1].type == SDL_KEYDOWN and e[1].key in [SDLK_RIGHT, SDLK_LEFT]
 
 class StateMachine:
     def __init__(self, obj):
