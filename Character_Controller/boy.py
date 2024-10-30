@@ -112,7 +112,7 @@ class AutoRun:
             boy.speed += 0.1
             boy.scale += 0.01
 
-            if boy.x >= boy.screen_width or boy.x <= 0:
+            if boy.x >= 375 or boy.x <= 25:
                 boy.dir *= -1
 
         else:
@@ -120,7 +120,7 @@ class AutoRun:
 
     @staticmethod
     def draw(boy):
-        boy.image.clip_draw(boy.frame * 100, boy.action * 100, int(100 * boy.scale), int(100 * boy.scale), boy.x, boy.y)
+        boy.image.clip_draw(boy.frame * 100, boy.action * 100, 100, 100, boy.x, boy.y, int(100 * boy.scale), int(100 * boy.scale))
 
 
 
