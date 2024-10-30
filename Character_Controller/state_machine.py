@@ -1,5 +1,15 @@
 from sdl2 import SDL_KEYDOWN, SDLK_SPACE, SDL_KEYUP, SDLK_RIGHT, SDLK_LEFT
 
+# 이벤트 체크 함수
+# 상태 이벤트 e = (종류, 실제값) 튜플로 정의
+def space_down(e):
+    return e[0] == 'INPUT' and e[1].type == SDL_KEYDOWN and e[1].key == SDLK_SPACE
+
+def time_out(e):
+    return e[0] == 'TIME_OUT'
+
+# time_out = lamda e : e[0] == 'TIME_OUT' 이렇게도 사용 가능
+
 def start_event(e):
     return e[0] == 'START'
 
@@ -15,17 +25,11 @@ def left_down(e):
 def left_up(e):
     return e[0] == 'INPUT' and e[1].type == SDL_KEYUP and e[1].key == SDLK_LEFT
 
+def a_down(e):
+    pass
 
-# 이벤트 체크 함수
-# 상태 이벤트 e = (종류, 실제값) 튜플로 정의
-def space_down(e):
-    return e[0] == 'INPUT' and e[1].type == SDL_KEYDOWN and e[1].key == SDLK_SPACE
-
-def time_out(e):
-    return e[0] == 'TIME_OUT'
-
-# time_out = lamda e : e[0] == 'TIME_OUT' 이렇게도 사용 가능
-
+def dir_key_down(e):
+    pass
 
 class StateMachine:
     def __init__(self, obj):
