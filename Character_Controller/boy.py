@@ -93,12 +93,12 @@ class AutoRun:
     @staticmethod
     def enter(boy, e):
         if a_down(e):
-            boy.start_time = get_time() # 현재 시각 저장
-            boy.speed = 1.0
-            boy.scale = 1.0
+            boy.action = 1
+            boy.speed, boy.scale= 5, 1.0
             boy.dir = 1         # 초기 값 : 오른쪽 방향
 
         boy.frame = 0
+        boy.start_time = get_time() # 현재 시각 저장
 
     @staticmethod
     def exit(boy, e):
@@ -114,13 +114,18 @@ class AutoRun:
 
             if boy.x >= 375 or boy.x <= 25:
                 boy.dir *= -1
+                if boy.x >= 375:
+                    boy.action = 0
+                else:
+                    boy.action = 1
 
         else:
+            boy.action = 3
             boy.state_machine.add_event(('TIME_OUT', 0))
 
     @staticmethod
     def draw(boy):
-        boy.image.clip_draw(boy.frame * 100, boy.action * 100, 100, 100, boy.x + boy.speed, boy.y, int(100 * boy.scale), int(100 * boy.scale))
+        boy.image.clip_composite_draw(boy.frame * 100, boy.action * 100, 100, 100, 0, '', boy.x + boy.speed, boy.y + (100 * boy.scale) / 2, int(100 * boy.scale), int(100 * boy.scale))
 
 
 
