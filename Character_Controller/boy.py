@@ -103,7 +103,16 @@ class AutoRun:
 
     @staticmethod
     def do(boy):
-        pass
+        if get_time() - boy.start_time < 5:
+            boy.x += boy.speed * boy.dir
+            boy.speed += 0.1
+            boy.scale += 0.01
+
+            if boy.x >= boy.screen_width or boy.x <= 0:
+                boy.dir *= -1
+
+        else:
+            boy.state_machine.add_event(('TIME_OUT', 0))
 
     @staticmethod
     def draw(boy):
