@@ -116,7 +116,7 @@ class AutoRun:
 
     @staticmethod
     def draw(boy):
-        pass
+        boy.image.clip_draw(boy.frame * 100, boy.action * 100, int(100 * boy.scale), int(100 * boy.scale), boy.x, boy.y)
 
 
 
@@ -133,7 +133,8 @@ class Boy:
             {
                 Idle : { right_down : Run, left_down : Run, left_up : Run, right_up : Run, time_out : Sleep },
                 Run : { right_down : Idle, left_down : Idle, left_up : Idle, right_up : Idle },
-                Sleep : { right_down : Run, left_down : Run, left_up : Run, right_up : Run, space_down : Idle}
+                Sleep : { right_down : Run, left_down : Run, left_up : Run, right_up : Run, space_down : Idle},
+                AutoRun : { dir_key_down : Run, time_out : Idle }
             }
         )
 
