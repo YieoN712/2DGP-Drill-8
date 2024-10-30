@@ -109,7 +109,7 @@ class AutoRun:
         boy.frame = (boy.frame + 1) % 8
         if get_time() - boy.start_time < 5:
             boy.x += boy.speed * boy.dir
-            boy.speed += 0.1
+            boy.speed += 1
             boy.scale += 0.01
 
             if boy.x >= 375 or boy.x <= 25:
@@ -120,7 +120,7 @@ class AutoRun:
 
     @staticmethod
     def draw(boy):
-        boy.image.clip_draw(boy.frame * 100, boy.action * 100, 100, 100, boy.x, boy.y, int(100 * boy.scale), int(100 * boy.scale))
+        boy.image.clip_draw(boy.frame * 100, boy.action * 100, 100, 100, boy.x + boy.speed, boy.y, int(100 * boy.scale), int(100 * boy.scale))
 
 
 
