@@ -135,7 +135,7 @@ class Boy:
         self.state_machine.start(Idle)      # class 이름 마저도 함수의 인자로 넘길 수 있다. 초기 상태 설정
         self.state_machine.set_transitions(
             {
-                Idle : { right_down : Run, left_down : Run, left_up : Run, right_up : Run, time_out : Sleep },
+                Idle : { right_down : Run, left_down : Run, left_up : Run, right_up : Run, a_down : AutoRun, time_out : Sleep },
                 Run : { right_down : Idle, left_down : Idle, left_up : Idle, right_up : Idle },
                 Sleep : { right_down : Run, left_down : Run, left_up : Run, right_up : Run, space_down : Idle},
                 AutoRun : { dir_key_down : Run, time_out : Idle }
