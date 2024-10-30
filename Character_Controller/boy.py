@@ -92,7 +92,10 @@ class Run:
 class AutoRun:
     @staticmethod
     def enter(boy, e):
-        pass
+        boy.start_time = get_time() # 현재 시각 저장
+        boy.speed = 1.0
+        boy.scale = 1.0
+        boy.dir = 1         # 초기 값 : 오른쪽 방향
 
     @staticmethod
     def exit(boy, e):
